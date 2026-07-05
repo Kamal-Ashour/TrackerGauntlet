@@ -18,12 +18,12 @@ fun main() {
 //----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
                          println("--------------------- Problem 1 -----------------------------")
-    for (i in 1..50) {
+    for (packageNumber in 1..50) {
 
-        if (((i%5)==0)&&((i%3)==0)) { println("PriorityExpress") }
-        else if ((i%5)==0) { println("Freight") }
-        else if ((i%3)==0) { println("Express") }
-        else println("$i")
+        if ( ( (packageNumber%5) ==0) &&( (packageNumber%3) ==0)) { println("PriorityExpress") }
+        else if ((packageNumber%5)==0) { println("Freight") }
+        else if ((packageNumber%3)==0) { println("Express") }
+        else println("$packageNumber")
     }
 println("-----------------------------------------------------------------------------------------------------------")
 println("-----------------------------------------------------------------------------------------------------------")
@@ -34,21 +34,21 @@ println("-----------------------------------------------------------------------
                         println("--------------------- Problem 2 -----------------------------")
 
 
-    val route = "HubA - HubB - HubC"
-    val hubs = route.split(" - ")
+    val originalRoute = "HubA - HubB - HubC"
+    val hubsList = originalRoute.split(" - ")
     var reversedRoute = ""
-    var l = hubs.size - 1
+    var currentIndex = hubsList.size - 1
 
-    while (l >= 0) {
-        reversedRoute += hubs[l]
+    while (currentIndex >= 0) {
+        reversedRoute += hubsList[currentIndex]
 
-        if (l != 0) {
+        if (currentIndex != 0) {
             reversedRoute += " - "
         }
-        l--
+        currentIndex--
     }
     println(reversedRoute)
-    println(route)
+    println(originalRoute)
 
 
 println("-----------------------------------------------------------------------------------------------------------")
@@ -63,10 +63,10 @@ println("-----------------------------------------------------------------------
 
 
     val weights = doubleArrayOf(14.5,19.5, 28.0, 100.0,29.7,-1.0,72.8)
-    var maxWeight = 0.0
-    for (i in weights.indices) {
-        if (maxWeight < weights[i]) {
-            maxWeight = weights[i]
+    var maxWeight = weights[0]
+    for (currentWeight in weights.indices) {
+        if (maxWeight < weights[currentWeight]) {
+            maxWeight = weights[currentWeight]
         }
     }
     println("Max Weight from the double array is  $maxWeight")
@@ -81,21 +81,21 @@ println("-----------------------------------------------------------------------
 //determine if transit codes like 'TR808RT' are palindromes.
 //
     val text = "TR808RT"
-    val TextLowercase = text.lowercase()
-    println(TextLowercase)
+    val LowercaseText = text.lowercase()
+    println(LowercaseText)
 
-    var i = 0
-    var j = TextLowercase.length - 1
+    var leftIndex = 0
+    var rightIndex = LowercaseText.length - 1
     var isPalindrome = true
 
-    while (i < j) {
-        if (text[i] != text[j]) {
+    while (leftIndex < rightIndex) {
+        if (LowercaseText[leftIndex] != LowercaseText[rightIndex]) {
             println("Not Palindrome")
             isPalindrome = false
             break
         }else{
-            i++
-            j--
+            leftIndex++
+            rightIndex--
         }
     }
     if (isPalindrome) {
@@ -109,29 +109,35 @@ println("-----------------------------------------------------------------------
 
 
     val TrackingIds = intArrayOf(28,37,48,66,76,98,125)
-    val target = 98
-    var low = 0
-    var high = TrackingIds.size - 1
-    var step = 1
+    val targetID = 98
+    var startIndex = 0
+    var endIndex = TrackingIds.size - 1
+    var countStep = 1
 
-    while (low <= high) {
-        val  mid = ( low + (high - low) /  2 )
-        val currentValue = TrackingIds[mid]
-        println( " Step $step ")
-        println("Current search range (indices): from $low to $high")
-        println("In this step $step, the middle value is $currentValue")
-        if (currentValue == target) {
-            println(" target = $target in index number $mid" )
+    while (startIndex <= endIndex) {
+        val  middleIndex = ( startIndex + (endIndex -startIndex) /  2 )
+        val currentValue = TrackingIds[middleIndex]
+        println( " Step $countStep ")
+        println("Current search range (indices): from $startIndex to $endIndex")
+        println("In this step $countStep, the middle value is $currentValue")
+        if (currentValue == targetID) {
+            println(" target = $targetID in index number $middleIndex" )
             break
-        } else if (currentValue > target) {
-            println(" $currentValue is greater than $target. Cutting the right half ")
-            high = mid - 1
+        } else if (currentValue > targetID) {
+            println(" $currentValue is greater than $targetID. Cutting the right half ")
+            endIndex = middleIndex - 1
         }   else {
-            println(" $currentValue is smaller than $target. Cutting the left half")
-            low = mid +1
+            println(" $currentValue is smaller than $targetID. Cutting the left half")
+            startIndex = middleIndex +1
         }
-        step ++
+        countStep ++
     }
+        println("Big O Notation is: 0(log N)")
+
+
+println("-----------------------------------------------------------------------------------------------------------")
+println("-----------------------------------------------------------------------------------------------------------")
+println("-----------------------------------------------------------------------------------------------------------")
 println("-----------------------------------------------------------------------------------------------------------")
 println("-----------------------------------------------------------------------------------------------------------")
 println("-----------------------------------------------------------------------------------------------------------")
