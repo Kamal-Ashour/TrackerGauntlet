@@ -58,7 +58,7 @@ println("-----------------------------------------------------------------------
     val weights = doubleArrayOf(14.5,19.5, 28.0, 100.0,29.7,-1.0,72.8)
     var maxWeight = weights[0]
     for (currentWeight in weights.indices) {
-        if (maxWeight < weights[currentWeight]) {
+        if (weights[currentWeight] > 0 && maxWeight < weights[currentWeight]) {
             maxWeight = weights[currentWeight]
         }
     }
@@ -73,15 +73,15 @@ println("-----------------------------------------------------------------------
 //determine if transit codes like 'TR808RT' are palindromes.
 //
     val text = "TR808RT"
-    val LowercaseText = text.lowercase()
-    println(LowercaseText)
+    val lowercaseText = text.lowercase()
+    println(lowercaseText)
 
     var leftIndex = 0
-    var rightIndex = LowercaseText.length - 1
+    var rightIndex = lowercaseText.length - 1
     var isPalindrome = true
 
     while (leftIndex < rightIndex) {
-        if (LowercaseText[leftIndex] != LowercaseText[rightIndex]) {
+        if (lowercaseText[leftIndex] != lowercaseText[rightIndex]) {
             println("Not Palindrome")
             isPalindrome = false
             break
