@@ -6,7 +6,7 @@ package org.bytebloom
  * =================================================================================
  *
  *  Since we are using "Recursion" to parse nested structures (Crates & Boxes),
- *  the JVM manages memory like a "stack of nesting dolls" or "a queue of workers"
+ *  the JVM manages memory like a " queue of workers"
  *  passing items back and forth:
  *
  *  1. Memory Boxes (Stack Frames):
